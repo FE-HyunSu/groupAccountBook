@@ -1,0 +1,27 @@
+[
+  {
+    "targetId": 1,
+    "description": "test",
+    "calculation": 5000
+  },
+  {
+    "targetId": 2,
+    "description": "test2",
+    "calculation": 5000
+  },
+  {
+    "targetId": 3,
+    "description": "test2",
+    "calculation": 5000
+  },
+  {
+    "targetId": 4,
+    "description": "test2",
+    "calculation": 5000
+  },
+  {
+    "targetId": 1,
+    "description": "강남 스터디윙 결제(10/23 13:00)",
+    "calculation": -17100
+  }
+]
