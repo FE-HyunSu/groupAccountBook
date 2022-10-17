@@ -1,27 +1,27 @@
 [
   {
     "id": 1,
-    "name": "김현수",
+    "userName": "김현수",
     "imgUrl": "/"
   },
   {
     "id": 2,
-    "name": "윤지환",
+    "userName": "윤지환",
     "imgUrl": "/"
   },
   {
     "id": 3,
-    "name": "이근영",
+    "userName": "이근영",
     "imgUrl": "/"
   },
   {
     "id": 4,
-    "name": "유소현",
+    "userName": "유소현",
     "imgUrl": "/"
   },
   {
     "id": 5,
-    "name": "유아영",
+    "userName": "유아영",
     "imgUrl": "/"
   }
 ]
