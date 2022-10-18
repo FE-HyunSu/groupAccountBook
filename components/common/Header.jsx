@@ -5,27 +5,13 @@ export default function Header() {
     <>
       <HeaderBox>
         <h1>
-          <strong>🥸 우주 리액트 스터디</strong>
+          <strong>🥸 React Study Group</strong>
         </h1>
       </HeaderBox>
     </>
   );
 }
 
-const FontColorMotion = keyframes`
-0% {
-  color: #111;
-}
-10% {
-  color: #0068c3;
-}
-60% {
-  color: #4b7c5e;
-}
-100% {
-  color: #ff0000;
-}
-`;
 const HeaderBox = styled.header`
   display: block;
   position: fixed;
@@ -34,9 +20,7 @@ const HeaderBox = styled.header`
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #fff;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  background-color: #ffa5ac;
   z-index: 100;
   h1 {
     display: flex;
@@ -50,11 +34,11 @@ const HeaderBox = styled.header`
       width: 100%;
       margin: 0;
       padding: 1.4rem 1rem;
-      font-weight: lighter;
-      font-size: 1.8rem;
+      font-weight: 300;
+      font-size: 1.4rem;
       color: #1a1a1a;
       letter-spacing: 0.1rem;
-      background-color: #fff;
+      background-color: #ffa5ac;
       text-align: center;
       text-transform: uppercase;
       transition: 0.2s;
@@ -66,20 +50,15 @@ const HeaderBox = styled.header`
       }
       &:hover {
         letter-spacing: 0.7rem;
-        background-color: #f7f7f7;
-        animation: ${FontColorMotion} 2s infinite linear alternate;
-        em {
-          animation: ${FontColorMotion} 2s infinite linear alternate;
-        }
       }
     }
   }
   & + div,
   & + section {
-    margin-top: 6.6rem;
+    margin-top: 4rem;
   }
   & + main {
     width: 100%;
-    margin: 6.6rem auto 0;
+    margin: 4rem auto 0;
   }
 `;
