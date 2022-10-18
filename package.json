@@ -1,5 +1,6 @@
 {
-  "name": "accountbook",
+  "homepage": "https://fe-hyunsu.github.io/groupAccountBook",
+  "name": "groupaccountbook",
   "version": "0.1.0",
   "private": true,
   "scripts": {
