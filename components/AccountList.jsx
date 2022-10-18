@@ -16,7 +16,9 @@ export default function AccountList() {
     memberList.forEach((item) => {
       if (item.id === userId) returnName = item.userName;
     });
-    return returnName;
+    return returnName.length > 2
+      ? returnName.replace(/(?<=.{2})./gi, '*')
+      : returnName.replace(/(?<=.{1})./gi, '*');
   };
 
   // total 잔액을 표기하는 함수입니다.
