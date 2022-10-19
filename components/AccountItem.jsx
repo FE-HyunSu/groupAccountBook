@@ -29,7 +29,9 @@ const AccountCard = styled.dl`
   border-top: 1px solid #f4f4f4;
   font-size: 1.6rem;
   transition: 0.2s;
+  box-sizing: border-box;
   &:hover {
+    padding: 0 4rem;
     background-color: #f4f4f4;
     transform: scale(1.05);
   }
