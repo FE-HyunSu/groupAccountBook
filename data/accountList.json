@@ -1,11 +1,5 @@
 [
   {
-    "targetId": 5,
-    "dateTime": "2022-10-19",
-    "description": "입금",
-    "calculation": 5000
-  },
-  {
     "targetId": 0,
     "dateTime": "2022-10-16",
     "description": "강남 스터디윙 예약(10/23 13:00)",
@@ -32,6 +26,12 @@
   {
     "targetId": 4,
     "dateTime": "2022-10-16",
+    "description": "입금",
+    "calculation": 5000
+  },
+  {
+    "targetId": 5,
+    "dateTime": "2022-10-19",
     "description": "입금",
     "calculation": 5000
   }

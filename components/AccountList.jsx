@@ -51,20 +51,21 @@ export default function AccountList() {
       </SectionBox>
       <SectionBox>
         <ul>
-          {/* dateTime 값으로 배열값 sort 필요 */}
           {accountTarget &&
-            accountTarget.map((item, idx) => {
-              return (
-                <li key={idx}>
-                  <AccountItem
-                    dateTime={item.dateTime}
-                    accountName={returnUserName(item.targetId)}
-                    price={item.calculation}
-                    description={item.description}
-                  />
-                </li>
-              );
-            })}
+            accountTarget
+              .sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime))
+              .map((item, idx) => {
+                return (
+                  <li key={idx}>
+                    <AccountItem
+                      dateTime={item.dateTime}
+                      accountName={returnUserName(item.targetId)}
+                      price={item.calculation}
+                      description={item.description}
+                    />
+                  </li>
+                );
+              })}
         </ul>
       </SectionBox>
     </>
