@@ -1,8 +1,14 @@
 [
   {
     "targetId": 0,
+    "dateTime": "2022-10-23",
+    "description": "강남 윙스터디 추가금액(10/23 13:00)",
+    "calculation": -5700
+  },
+  {
+    "targetId": 0,
     "dateTime": "2022-10-16",
-    "description": "강남 스터디윙 예약(10/23 13:00)",
+    "description": "강남 윙스터디 예약(10/23 13:00)",
     "calculation": -17100
   },
   {
