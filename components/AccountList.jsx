@@ -7,6 +7,7 @@ import AccountItem from '../components/AccountItem';
 export default function AccountList() {
   const [accountTarget, setAccountTarget] = useState(accountList);
   const [totalPrice, setTotalPrice] = useState('0');
+  const [nbbang, setNbbang] = useState('0');
   const addComa = (number) => {
     return number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
   };
@@ -26,6 +27,7 @@ export default function AccountList() {
     let returnPrice = 0;
     accountTarget.forEach((item) => (returnPrice += Number(item.calculation)));
     setTotalPrice(addComa(returnPrice));
+    setNbbang(addComa(returnPrice / memberList.length));
   };
 
   useEffect(() => {
@@ -37,6 +39,7 @@ export default function AccountList() {
       <SectionBox>
         <div className="total-price">
           <strong>{totalPrice}</strong>
+          <em>1/n 정산 :{nbbang}</em>
           <p>
             {memberList &&
               memberList.map((item, idx) => {
@@ -80,13 +83,29 @@ const SectionBox = styled.section`
     text-align: center;
     strong {
       display: inline-block;
-      padding-bottom: 1rem;
       font-weight: bold;
       font-size: 4rem;
       color: #111;
       transition: 0.3s;
       &:after {
         content: '원';
+      }
+      &:hover {
+        transform: scale(1.1, 1.1);
+      }
+    }
+    em {
+      display: block;
+      padding-bottom: 1rem;
+      font-size: 1.4rem;
+      text-align: center;
+      transition: 0.3s;
+      opacity: 0.4;
+      &:before {
+        content: '(';
+      }
+      &:after {
+        content: '원)';
       }
       &:hover {
         transform: scale(1.1, 1.1);

@@ -1,6 +1,12 @@
 [
   {
     "targetId": 0,
+    "dateTime": "2022-10-27",
+    "description": "강남 모임플러스(10/30 11:00(2h))",
+    "calculation": -15000
+  },
+  {
+    "targetId": 0,
     "dateTime": "2022-10-23",
     "description": "강남 윙스터디 추가금액(10/23 13:00)",
     "calculation": -5700
