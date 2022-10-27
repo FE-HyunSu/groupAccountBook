@@ -6,7 +6,7 @@
 ### 🪬 내용
 - 정산내역 기록용으로 생성.
 - 카뱅 UI를 참고함.
-- `React` `NextJS` `Netlify`
+- `React` `NextJS` `Netlify` `firebase` `firestore`
 
 ### 🧾 데이터 관리
 - `memberList.json` : 멤버 정보. { `id` : 고유값, `userName` : 이름, `imgUrl` : 프로필 이미지 }
