@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-// import memberList from '../data/memberList.json';
+// import memberList from '../data/memberList.json';ㅕㄴ
 import accountList from '../data/accountList.json';
 import AccountItem from '../components/AccountItem';
 import { app, database } from '../firebaseConfig';
@@ -47,7 +47,7 @@ export default function AccountList() {
   useEffect(() => {
     totalPriceCalculation();
     getMemberList();
-  }, []);
+  }, [memberList]);
 
   return (
     <>
