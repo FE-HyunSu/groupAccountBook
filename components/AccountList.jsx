@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import memberList from '../data/memberList.json';
+// import memberList from '../data/memberList.json';
 import accountList from '../data/accountList.json';
 import AccountItem from '../components/AccountItem';
+import { app, database } from '../firebaseConfig';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 export default function AccountList() {
+  const dbInstance = collection(database, 'userList'); // firestore 'userList'
   const [accountTarget, setAccountTarget] = useState(accountList);
   const [totalPrice, setTotalPrice] = useState('0');
   const [nbbang, setNbbang] = useState('0');
+  const [memberList, setmemberList] = useState([]);
+  const getMemberList = () => {
+    getDocs(dbInstance).then((data) => {
+      const list = data.docs.map((item) => {
+        return { ...item.data(), id: item.id };
+      });
+      setmemberList(list);
+    });
+  };
+
+  // 금액 단위로 숫자를 콤마 찍어서 return.
   const addComa = (number) => {
     return number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
   };
@@ -32,6 +46,7 @@ export default function AccountList() {
 
   useEffect(() => {
     totalPriceCalculation();
+    getMemberList();
   }, []);
 
   return (
@@ -44,7 +59,7 @@ export default function AccountList() {
             {memberList &&
               memberList.map((item, idx) => {
                 return (
-                  <span key={idx} style={{ backgroundImage: `url(${item.imgUrl})` }}>
+                  <span key={idx} style={{ backgroundImage: `url(${item.userImg})` }}>
                     {item.userName}
                   </span>
                 );
