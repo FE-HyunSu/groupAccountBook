@@ -1,27 +1,27 @@
 [
   {
-    "id": 1,
+    "userId": 1,
     "userName": "김현수",
-    "imgUrl": "https://avatars.githubusercontent.com/u/115357815?v=4"
+    "userImg": "https://avatars.githubusercontent.com/u/115357815?v=4"
   },
   {
-    "id": 2,
+    "userId": 2,
     "userName": "윤지환",
-    "imgUrl": "https://avatars.githubusercontent.com/u/60729088?v=4"
+    "userImg": "https://avatars.githubusercontent.com/u/60729088?v=4"
   },
   {
-    "id": 3,
+    "userId": 3,
     "userName": "이근영",
-    "imgUrl": "https://avatars.githubusercontent.com/u/79135142?v=4"
+    "userImg": "https://avatars.githubusercontent.com/u/79135142?v=4"
   },
   {
-    "id": 4,
+    "userId": 4,
     "userName": "유소현",
-    "imgUrl": "https://avatars.githubusercontent.com/u/73421899?v=4"
+    "userImg": "https://avatars.githubusercontent.com/u/73421899?v=4"
   },
   {
-    "id": 5,
+    "userId": 5,
     "userName": "유아영",
-    "imgUrl": "https://avatars.githubusercontent.com/u/41851801?v=4"
+    "userImg": "https://avatars.githubusercontent.com/u/41851801?v=4"
   }
 ]
