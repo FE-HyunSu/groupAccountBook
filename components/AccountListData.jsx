@@ -1,23 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-// import memberList from '../data/memberList.json';ㅕㄴ
-import accountList from '../data/accountList.json';
-import AccountItem from '../components/AccountItem';
+import AccountItem from './AccountItem';
 import { app, database } from '../firebaseConfig';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 export default function AccountList() {
-  const dbInstance = collection(database, 'userList'); // firestore 'userList'
-  const [accountTarget, setAccountTarget] = useState(accountList);
+  const dbInstanceUserList = collection(database, 'userList');
+  const [memberList, setmemberList] = useState([]);
+  const dbInstanceAccountList = collection(database, 'accountList');
+  const [accountList, setAccountList] = useState([]);
   const [totalPrice, setTotalPrice] = useState('0');
   const [nbbang, setNbbang] = useState('0');
-  const [memberList, setmemberList] = useState([]);
-  const getMemberList = () => {
-    getDocs(dbInstance).then((data) => {
-      const list = data.docs.map((item) => {
+  const getMemberList = async () => {
+    await getDocs(dbInstanceUserList).then((data) => {
+      const userList = data.docs.map((item) => {
         return { ...item.data(), id: item.id };
       });
-      setmemberList(list);
+      setmemberList(userList); // memberList 값에 업데이트.
+      getAccountList(userList);
+    });
+  };
+
+  const getAccountList = async (userList) => {
+    await getDocs(dbInstanceAccountList).then((data) => {
+      const accountList = data.docs.map((item) => {
+        return { ...item.data(), id: item.id };
+      });
+      setAccountList(accountList); // accountList 값에 업데이트.
+      totalPriceCalculation(userList, accountList);
     });
   };
 
@@ -29,25 +39,25 @@ export default function AccountList() {
   const returnUserName = (userId) => {
     let returnName = '(이름없음)';
     memberList.forEach((item) => {
-      if (item.id === userId) returnName = item.userName;
+      if (Number(item.id) === userId) returnName = item.userName;
     });
+
     return returnName.length > 2
       ? returnName.replace(/(?<=.{2})./gi, '*')
       : returnName.replace(/(?<=.{1})./gi, '*');
   };
 
   // total 잔액을 표기하는 함수입니다.
-  const totalPriceCalculation = () => {
+  const totalPriceCalculation = (user, account) => {
     let returnPrice = 0;
-    accountTarget.forEach((item) => (returnPrice += Number(item.calculation)));
+    account.forEach((item) => (returnPrice += Number(item.calculation)));
     setTotalPrice(addComa(returnPrice));
-    setNbbang(addComa(returnPrice / memberList.length));
+    setNbbang(addComa(returnPrice / user.length));
   };
 
   useEffect(() => {
-    totalPriceCalculation();
     getMemberList();
-  }, [memberList]);
+  }, []);
 
   return (
     <>
@@ -69,8 +79,8 @@ export default function AccountList() {
       </SectionBox>
       <SectionBox>
         <ul>
-          {accountTarget &&
-            accountTarget
+          {accountList &&
+            accountList
               .sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime))
               .map((item, idx) => {
                 return (
