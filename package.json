@@ -3,18 +3,19 @@
   "name": "groupaccountbook",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "PHASE=dev node local.js",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "export": "next export",
-    "predeploy": "npm run build",
-    "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages",
-    "deploy-gh-pages": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add -f out/ && git checkout -b temp-for-deploy-gh-pages && git commit -m \"Deploy Next.js to gh-pages\" && git subtree split --prefix out -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages && git checkout main && git branch -D temp-for-deploy-gh-pages"
+    "serve": "npm run build && firebase emulators:start --only functions,hosting",
+    "shell": "npm run build && firebase functions:shell",
+    "deploy": "firebase deploy --only functions,hosting",
+    "logs": "firebase functions:log"
   },
   "dependencies": {
     "firebase": "^9.12.1",
+    "firebase-tools": "^11.15.0",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
