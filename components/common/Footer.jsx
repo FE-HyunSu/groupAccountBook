@@ -38,6 +38,11 @@ export default function Footer() {
         background-color: #f7f7f7;
         letter-spacing: 0.4rem;
         animation: ${FontColorMotion} 2s infinite linear alternate;
+        @media only screen and (max-width: 992px) {
+          background-color: #fff;
+          letter-spacing: 0;
+          animation: none;
+        }
       }
     }
   `;

@@ -35,6 +35,11 @@ const AccountCard = styled.dl`
     padding: 0 4rem;
     background-color: #f4f4f4;
     transform: scale(1.05);
+    @media only screen and (max-width: 992px) {
+      padding: 0;
+      background-color: #fff;
+      transform: scale(1);
+    }
   }
   dt {
     display: flex;

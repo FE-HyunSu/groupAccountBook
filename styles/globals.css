@@ -186,3 +186,8 @@ em {
 html {
   font-size: 10px;
 }
+@media only screen and (max-width: 992px) {
+  html {
+    font-size: 8px;
+  }
+}

@@ -50,6 +50,9 @@ const HeaderBox = styled.header`
       }
       &:hover {
         letter-spacing: 0.7rem;
+        @media only screen and (max-width: 992px) {
+          letter-spacing: 0;
+        }
       }
     }
   }
