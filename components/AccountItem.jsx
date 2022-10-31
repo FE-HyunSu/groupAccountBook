@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export default function AccountItem({ dateTime, accountName, price, description }) {
   const addComa = (number) => {
-    return (
-      (number > 0 ? `+` : ``) + number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')
-    );
+    const numberComa = number.toString().split('.');
+    numberComa[0] = numberComa[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return numberComa.join('.');
   };
+
   const shortDate = (date) => {
     return date.split('-')[1] + '.' + date.split('-')[2];
   };
@@ -37,6 +38,8 @@ const AccountCard = styled.dl`
   }
   dt {
     display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 2rem;
     strong {
       display: inline-block;

@@ -33,8 +33,11 @@ export default function AccountList() {
 
   // 금액 단위로 숫자를 콤마 찍어서 return.
   const addComa = (number) => {
-    return number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+    const numberComa = number.toString().split('.');
+    numberComa[0] = numberComa[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return numberComa.join('.');
   };
+
   // userId 값으로, 해당 user의 이름을 return 합니다.
   const returnUserName = (userId) => {
     let returnName = '(이름없음)';
@@ -42,9 +45,7 @@ export default function AccountList() {
       if (Number(item.id) === userId) returnName = item.userName;
     });
 
-    return returnName.length > 2
-      ? returnName.replace(/(?<=.{2})./gi, '*')
-      : returnName.replace(/(?<=.{1})./gi, '*');
+    return returnName;
   };
 
   // total 잔액을 표기하는 함수입니다.
