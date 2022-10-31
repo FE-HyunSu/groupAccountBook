@@ -1,7 +1,7 @@
 ## 💵 리액트 스터디 모임 정산 페이지
 
 ### 🏂 URL 
-- page : https://ubiquitous-longma-e702f7.netlify.app/ 
+- page : https://illustrious-arithmetic-f0422e.netlify.app
 
 ### 🪬 내용
 - 정산내역 기록용으로 생성.
