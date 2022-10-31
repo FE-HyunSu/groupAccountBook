@@ -1,19 +1,15 @@
 {
-  "homepage": "https://fe-hyunsu.github.io/groupAccountBook",
   "name": "groupaccountbook",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
   "scripts": {
-    "dev": "PHASE=dev node local.js",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "serve": "npm run build && firebase emulators:start --only functions,hosting",
-    "shell": "npm run build && firebase functions:shell",
-    "deploy": "firebase deploy --only functions,hosting",
-    "logs": "firebase functions:log"
+    "export": "next export"
   },
   "dependencies": {
+    "esbuild": "^0.15.12",
     "firebase": "^9.12.1",
     "firebase-tools": "^11.15.0",
     "next": "12.3.1",
