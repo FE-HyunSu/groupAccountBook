@@ -1,5 +1,8 @@
 /* reset css */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300&display=swap');
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url('./fonts/notosanskr_300.woff2') format('woff2');
+}
 html,
 body,
 div,
@@ -84,6 +87,7 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
+  font-weight: 300;
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 100%;
 }

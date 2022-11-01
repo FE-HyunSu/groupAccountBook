@@ -109,12 +109,13 @@ const SectionBox = styled.section`
     text-align: center;
     strong {
       display: inline-block;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 4rem;
       color: #111;
       transition: 0.3s;
       &:after {
         content: '원';
+        font-weight: 700;
       }
       &:hover {
         transform: scale(1.1, 1.1);
