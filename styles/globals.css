@@ -3,6 +3,11 @@
   font-family: 'Noto Sans KR';
   src: url('./fonts/notosanskr_300.woff2') format('woff2');
 }
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter_500.woff2') format('woff2');
+  unicode-range: U+0030-0039;
+}
 html,
 body,
 div,
@@ -88,7 +93,7 @@ video {
   padding: 0;
   border: 0;
   font-weight: 300;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
   font-size: 100%;
 }
 article,
@@ -192,6 +197,6 @@ html {
 }
 @media only screen and (max-width: 992px) {
   html {
-    font-size: 8px;
+    font-size: 9px;
   }
 }
