@@ -69,6 +69,9 @@ const AccountCard = styled.dl`
     letter-spacing: -0.05rem;
     &.plus {
       color: #0a7ec6;
+      &:before {
+        content: '+';
+      }
     }
     &.minus {
       color: #000;
