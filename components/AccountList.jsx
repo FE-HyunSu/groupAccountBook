@@ -6,29 +6,33 @@ import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 export default function AccountList() {
   const dbInstanceUserList = collection(database, 'userList');
+  const [memberListAll, setmemberListAll] = useState([]);
   const [memberList, setmemberList] = useState([]);
   const dbInstanceAccountList = collection(database, 'accountList');
   const [accountList, setAccountList] = useState([]);
+  const [accountListAll, setAccountListAll] = useState([]);
   const [totalPrice, setTotalPrice] = useState('0');
   const [nbbang, setNbbang] = useState('0');
-  const getMemberList = async () => {
-    await getDocs(dbInstanceUserList).then((data) => {
-      const userList = data.docs.map((item) => {
-        return { ...item.data(), id: item.id };
-      });
-      setmemberList(userList); // memberList 값에 업데이트.
-      getAccountList(userList);
-    });
-  };
 
-  const getAccountList = async (userList) => {
-    await getDocs(dbInstanceAccountList).then((data) => {
-      const accountList = data.docs.map((item) => {
+  // 최초 모든 정보를 상태값에 저장. (멤버, 입출금 이력)
+  const getListAll = async () => {
+    let getUserList = [];
+    let getAccountList = [];
+    await getDocs(dbInstanceUserList).then((data) => {
+      getUserList = data.docs.map((item) => {
         return { ...item.data(), id: item.id };
       });
-      setAccountList(accountList); // accountList 값에 업데이트.
-      totalPriceCalculation(userList, accountList);
+      setmemberListAll(getUserList);
+      setmemberList(getUserList);
     });
+    await getDocs(dbInstanceAccountList).then((data) => {
+      getAccountList = data.docs.map((item) => {
+        return { ...item.data(), id: item.id };
+      });
+      setAccountListAll(getAccountList);
+      setAccountList(getAccountList);
+    });
+    totalPriceCalculation(getUserList, getAccountList);
   };
 
   // 금액 단위로 숫자를 콤마 찍어서 return.
@@ -57,7 +61,7 @@ export default function AccountList() {
   };
 
   useEffect(() => {
-    getMemberList();
+    getListAll();
   }, []);
 
   return (
@@ -70,9 +74,13 @@ export default function AccountList() {
             {memberList &&
               memberList.map((item, idx) => {
                 return (
-                  <span key={idx} style={{ backgroundImage: `url(${item.userImg})` }}>
+                  <button
+                    key={idx}
+                    style={{ backgroundImage: `url(${item.userImg})` }}
+                    onClick={() => console.log(item.userName)}
+                  >
                     {item.userName}
-                  </span>
+                  </button>
                 );
               })}
           </p>
@@ -120,7 +128,7 @@ const SectionBox = styled.section`
       &:hover {
         transform: scale(1.1, 1.1);
         @media only screen and (max-width: 992px) {
-          transform: scale(1,1);
+          transform: scale(1, 1);
         }
       }
     }
@@ -140,11 +148,11 @@ const SectionBox = styled.section`
       &:hover {
         transform: scale(1.1, 1.1);
         @media only screen and (max-width: 992px) {
-          transform: scale(1,1);
+          transform: scale(1, 1);
         }
       }
     }
-    span {
+    button {
       display: inline-block;
       width: 3.5rem;
       height: 3.5rem;
@@ -160,7 +168,7 @@ const SectionBox = styled.section`
       &:hover {
         transform: scale(1.2);
         @media only screen and (max-width: 992px) {
-          transform: scale(1,1);
+          transform: scale(1, 1);
         }
       }
     }

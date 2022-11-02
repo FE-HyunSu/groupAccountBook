@@ -1,11 +1,11 @@
 /* reset css */
 @font-face {
   font-family: 'Noto Sans KR';
-  src: url('./fonts/notosanskr_300.woff2') format('woff2');
+  src: url('../styles/fonts/notosanskr_500.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Inter';
-  src: url('./fonts/inter_500.woff2') format('woff2');
+  src: url('../styles/fonts/inter_500.woff2') format('woff2');
   unicode-range: U+0030-0039;
 }
 html,
@@ -92,7 +92,7 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-weight: 300;
+  font-weight: 500;
   font-family: 'Inter', 'Noto Sans KR', sans-serif;
   font-size: 100%;
 }

@@ -48,12 +48,13 @@ const AccountCard = styled.dl`
     padding: 2rem;
     strong {
       display: inline-block;
-      font-weight: 300;
+      font-weight: 500;
+      color: #3a3a3a;
     }
     span {
       display: inline-block;
       padding-right: 1.5rem;
-      font-weight: 300;
+      font-weight: 500;
       font-size: 1.2rem;
       color: #777;
     }

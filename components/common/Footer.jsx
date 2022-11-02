@@ -28,7 +28,7 @@ export default function Footer() {
       height: 100%;
       margin: 0;
       padding: 0;
-      font-weight: lighter;
+      font-weight: 300;
       font-size: 1.4rem;
       color: #1a1a1a;
       background-color: #fff;
