@@ -50,6 +50,7 @@ const AccountCard = styled.dl`
       display: inline-block;
       font-weight: 500;
       color: #3a3a3a;
+      letter-spacing: -0.05rem;
     }
     span {
       display: inline-block;
@@ -57,6 +58,7 @@ const AccountCard = styled.dl`
       font-weight: 500;
       font-size: 1.2rem;
       color: #777;
+      letter-spacing: -0.05rem;
     }
   }
   dd {
@@ -64,6 +66,7 @@ const AccountCard = styled.dl`
     padding: 2rem;
     font-weight: 500;
     text-align: right;
+    letter-spacing: -0.05rem;
     &.plus {
       color: #0a7ec6;
     }

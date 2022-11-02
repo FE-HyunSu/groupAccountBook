@@ -120,6 +120,7 @@ const SectionBox = styled.section`
       font-weight: 700;
       font-size: 4rem;
       color: #111;
+      letter-spacing: -0.1rem;
       transition: 0.3s;
       &:after {
         content: '원';
