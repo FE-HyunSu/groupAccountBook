@@ -119,6 +119,9 @@ const SectionBox = styled.section`
       }
       &:hover {
         transform: scale(1.1, 1.1);
+        @media only screen and (max-width: 992px) {
+          transform: scale(1,1);
+        }
       }
     }
     em {
@@ -136,6 +139,9 @@ const SectionBox = styled.section`
       }
       &:hover {
         transform: scale(1.1, 1.1);
+        @media only screen and (max-width: 992px) {
+          transform: scale(1,1);
+        }
       }
     }
     span {
@@ -153,6 +159,9 @@ const SectionBox = styled.section`
       }
       &:hover {
         transform: scale(1.2);
+        @media only screen and (max-width: 992px) {
+          transform: scale(1,1);
+        }
       }
     }
   }
