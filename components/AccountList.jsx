@@ -6,8 +6,8 @@ import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 export default function AccountList() {
   const dbInstanceUserList = collection(database, 'userList');
-  const [memberListAll, setmemberListAll] = useState([]);
-  const [memberList, setmemberList] = useState([]);
+  const [memberListAll, setMemberListAll] = useState([]);
+  const [memberList, setMemberList] = useState([]);
   const dbInstanceAccountList = collection(database, 'accountList');
   const [accountList, setAccountList] = useState([]);
   const [accountListAll, setAccountListAll] = useState([]);
@@ -22,8 +22,8 @@ export default function AccountList() {
       getUserList = data.docs.map((item) => {
         return { ...item.data(), id: item.id };
       });
-      setmemberListAll(getUserList);
-      setmemberList(getUserList);
+      setMemberListAll(getUserList);
+      setMemberList(getUserList);
     });
     await getDocs(dbInstanceAccountList).then((data) => {
       getAccountList = data.docs.map((item) => {
@@ -33,6 +33,18 @@ export default function AccountList() {
       setAccountList(getAccountList);
     });
     totalPriceCalculation(getUserList, getAccountList);
+  };
+
+  // member id로 account 목록을 filter 하는 함수.
+  const targetFilter = (filterId) => {
+    if (filterId === -1) {
+      setAccountList(accountListAll);
+    } else {
+      const returnList = accountListAll.filter((item) => {
+        return Number(item.targetId) === Number(filterId);
+      });
+      setAccountList(returnList);
+    }
   };
 
   // 금액 단위로 숫자를 콤마 찍어서 return.
@@ -71,18 +83,24 @@ export default function AccountList() {
           <strong>{totalPrice}</strong>
           <em>1/n 정산 :{nbbang}</em>
           <p>
+            <button type="button" className="btn-listall" onClick={() => targetFilter(-1)}>
+              all
+            </button>
             {memberList &&
               memberList.map((item, idx) => {
                 return (
                   <button
                     key={idx}
                     style={{ backgroundImage: `url(${item.userImg})` }}
-                    onClick={() => console.log(item.userName)}
+                    onClick={() => targetFilter(item.id)}
                   >
                     {item.userName}
                   </button>
                 );
               })}
+            <button type="button" className="btn-expenditure" onClick={() => targetFilter(0)}>
+              all
+            </button>
           </p>
         </div>
       </SectionBox>
@@ -157,12 +175,44 @@ const SectionBox = styled.section`
       display: inline-block;
       width: 3.5rem;
       height: 3.5rem;
-      margin-right: -1rem;
+      margin-right: -0.7rem;
       background-size: 100% auto;
       border-radius: 100%;
       text-indent: -999rem;
       transition: 0.2s;
       opacity: 1;
+      &.btn-listall {
+        position: relative;
+        background-color: #999;
+        opacity: 0.7;
+        &:before {
+          content: 'ALL';
+          display: block;
+          position: absolute;
+          width: 100%;
+          font-weight: 500;
+          font-size: 1.1rem;
+          color: #fff;
+          line-height: 1;
+          text-indent: 0;
+        }
+      }
+      &.btn-expenditure {
+        position: relative;
+        background-color: #999;
+        opacity: 0.7;
+        &:before {
+          content: '지출';
+          display: block;
+          position: absolute;
+          width: 100%;
+          font-weight: 500;
+          font-size: 1.2rem;
+          color: #fff;
+          line-height: 1;
+          text-indent: 0;
+        }
+      }
       &:last-child {
         margin-right: 0;
       }
