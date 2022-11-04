@@ -105,7 +105,11 @@ export default function AccountList() {
           <strong>{totalPrice}</strong>
           <em className={allCheck ? `active` : ``}>1/n 정산 :{nbbang}</em>
           <p>
-            <button type="button" className="btn-listall" onClick={(e) => targetFilter(-1, e)}>
+            <button
+              type="button"
+              className="btn-listall active"
+              onClick={(e) => targetFilter(-1, e)}
+            >
               all
             </button>
             {memberList &&
@@ -210,7 +214,7 @@ const SectionBox = styled.section`
       opacity: 1;
       &.active {
         border: 0.1rem solid #fff;
-        transform: scale(1.3) !important;
+        transform: scale(1.4) rotate(-8deg) !important;
         z-index: 2;
       }
       &.btn-listall {
