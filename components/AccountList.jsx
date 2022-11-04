@@ -13,6 +13,7 @@ export default function AccountList() {
   const [accountListAll, setAccountListAll] = useState([]);
   const [totalPrice, setTotalPrice] = useState('0');
   const [nbbang, setNbbang] = useState('0');
+  const [allCheck, setAllCheck] = useState(true);
 
   // 최초 모든 정보를 상태값에 저장. (멤버, 입출금 이력)
   const getListAll = async () => {
@@ -39,11 +40,15 @@ export default function AccountList() {
   const targetFilter = (filterId) => {
     if (filterId === -1) {
       setAccountList(accountListAll);
+      totalPriceCalculation(memberList, accountListAll);
+      setAllCheck(true);
     } else {
       const returnList = accountListAll.filter((item) => {
         return Number(item.targetId) === Number(filterId);
       });
       setAccountList(returnList);
+      priceCalculation(returnList);
+      setAllCheck(false);
     }
   };
 
@@ -64,12 +69,19 @@ export default function AccountList() {
     return returnName;
   };
 
-  // total 잔액을 표기하는 함수입니다.
+  // total 잔액을 표기하는 함수.
   const totalPriceCalculation = (user, account) => {
     let returnPrice = 0;
     account.forEach((item) => (returnPrice += Number(item.calculation)));
     setTotalPrice(addComa(returnPrice));
     setNbbang(addComa(returnPrice / user.length));
+  };
+
+  // target 잔액을 표기하는 함수.
+  const priceCalculation = (filterAccountList) => {
+    let returnPrice = 0;
+    filterAccountList.forEach((item) => (returnPrice += Number(item.calculation)));
+    setTotalPrice(addComa(returnPrice));
   };
 
   useEffect(() => {
@@ -81,7 +93,7 @@ export default function AccountList() {
       <SectionBox>
         <div className="total-price">
           <strong>{totalPrice}</strong>
-          <em>1/n 정산 :{nbbang}</em>
+          <em className={allCheck ? `active` : ``}>1/n 정산 :{nbbang}</em>
           <p>
             <button type="button" className="btn-listall" onClick={() => targetFilter(-1)}>
               all
@@ -153,11 +165,15 @@ const SectionBox = styled.section`
     }
     em {
       display: block;
-      padding-bottom: 1rem;
+      padding-bottom: 0;
       font-size: 1.4rem;
       text-align: center;
       transition: 0.3s;
-      opacity: 0.4;
+      opacity: 0;
+      &.active {
+        padding-bottom: 1rem;
+        opacity: 0.4;
+      }
       &:before {
         content: '(';
       }
@@ -175,7 +191,7 @@ const SectionBox = styled.section`
       display: inline-block;
       width: 3.5rem;
       height: 3.5rem;
-      margin-right: -0.7rem;
+      margin-right: -0.2rem;
       background-size: 100% auto;
       border-radius: 100%;
       text-indent: -999rem;
@@ -191,7 +207,7 @@ const SectionBox = styled.section`
           position: absolute;
           width: 100%;
           font-weight: 500;
-          font-size: 1.1rem;
+          font-size: 1.2rem;
           color: #fff;
           line-height: 1;
           text-indent: 0;
