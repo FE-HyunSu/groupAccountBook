@@ -36,8 +36,18 @@ export default function AccountList() {
     totalPriceCalculation(getUserList, getAccountList);
   };
 
+  // memberList click effect.
+  const btnActive = (e) => {
+    const btnGroup = e.target.parentNode;
+    btnGroup.querySelectorAll('button').forEach((item) => {
+      item.classList.remove('active');
+    });
+    e.target.classList.add('active');
+  };
+
   // member id로 account 목록을 filter 하는 함수.
-  const targetFilter = (filterId) => {
+  const targetFilter = (filterId, e) => {
+    btnActive(e);
     if (filterId === -1) {
       setAccountList(accountListAll);
       totalPriceCalculation(memberList, accountListAll);
@@ -95,7 +105,7 @@ export default function AccountList() {
           <strong>{totalPrice}</strong>
           <em className={allCheck ? `active` : ``}>1/n 정산 :{nbbang}</em>
           <p>
-            <button type="button" className="btn-listall" onClick={() => targetFilter(-1)}>
+            <button type="button" className="btn-listall" onClick={(e) => targetFilter(-1, e)}>
               all
             </button>
             {memberList &&
@@ -104,13 +114,13 @@ export default function AccountList() {
                   <button
                     key={idx}
                     style={{ backgroundImage: `url(${item.userImg})` }}
-                    onClick={() => targetFilter(item.id)}
+                    onClick={(e) => targetFilter(item.id, e)}
                   >
                     {item.userName}
                   </button>
                 );
               })}
-            <button type="button" className="btn-expenditure" onClick={() => targetFilter(0)}>
+            <button type="button" className="btn-expenditure" onClick={(e) => targetFilter(0, e)}>
               all
             </button>
           </p>
@@ -195,8 +205,14 @@ const SectionBox = styled.section`
       background-size: 100% auto;
       border-radius: 100%;
       text-indent: -999rem;
+      border: 0rem solid #fff;
       transition: 0.2s;
       opacity: 1;
+      &.active {
+        border: 0.1rem solid #fff;
+        transform: scale(1.3) !important;
+        z-index: 2;
+      }
       &.btn-listall {
         position: relative;
         background-color: #999;
