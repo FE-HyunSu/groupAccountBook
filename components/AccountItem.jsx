@@ -14,7 +14,7 @@ export default function AccountItem({ dateTime, accountName, price, description 
     <>
       <AccountCard>
         <dt>
-          <span>{shortDate(dateTime)}</span>
+          <span>{shortDate(dateTime.split(' ')[0])}</span>
           <strong>{Number(price) > 0 ? accountName : description}</strong>
         </dt>
         <dd className={Number(price) > 0 ? `plus` : `minus`}>{addComa(price)}</dd>
