@@ -203,9 +203,9 @@ const SectionBox = styled.section`
     }
     button {
       display: inline-block;
-      width: 3.5rem;
-      height: 3.5rem;
-      margin-right: -0.2rem;
+      width: 4rem;
+      height: 4rem;
+      margin-right: 0rem;
       background-size: 100% auto;
       border-radius: 100%;
       text-indent: -999rem;
