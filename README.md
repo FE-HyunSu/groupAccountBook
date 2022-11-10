@@ -9,6 +9,7 @@
 - `React` `NextJS` `Netlify` `firebase` `firestore`
 
 ### 🧾 데이터 관리
-- `memberList.json` : 멤버 정보. { `id` : 고유값, `userName` : 이름, `imgUrl` : 프로필 이미지 }
-- `accountList.json` : 입출금 내역. { `targetId` : 멤버id, `dateTime` : 날짜, `description` : 내용, `calculation` : 금액 }
+- Firebase Firestore
+- 멤버 정보. { `id` : 고유값, `userName` : 이름, `imgUrl` : 프로필 이미지 }
+- 입출금 내역. { `targetId` : 멤버id, `dateTime` : 날짜, `description` : 내용, `calculation` : 금액 }
 
