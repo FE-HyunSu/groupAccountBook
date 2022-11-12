@@ -1,4 +1,10 @@
-## 💵 리액트 스터디 모임 정산 페이지
+## 💵 리액트 스터디 모임 정산 페이지 (ver1)
+- 해당 프로젝트는 ver2로 migraition 되었습니다.
+- ver2 : https://github.com/FE-HyunSu/accountbook.v2
+
+<br/>
+
+## 📽 지난기록
 
 ### 🏂 URL 
 - page : https://illustrious-arithmetic-f0422e.netlify.app
